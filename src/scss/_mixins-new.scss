@@ -1,0 +1,34 @@
+// mixins 심화.
+@mixin responsive-one {
+  @content;
+  color: red;
+}
+
+$minIphone: 500px;
+$maxIphone: 690px;
+
+$minGalaxy: 700px;
+$maxGalaxy: 900px;
+
+$minSony: 1000px;
+$maxSony: 1200px;
+
+@mixin responsive-two($device) {
+  @if $device == "iphone" {
+    @media screen and (min-width: $minIphone) and (max-width: $maxIphone) {
+      @content;
+    }
+  } @else if $device == "tablet" {
+    @media screen and (min-width: $minGalaxy) and (max-width: $maxGalaxy) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $device == "galaxy" {
+    @media screen and (min-width: $minGalaxy) and (max-width: $maxGalaxy) {
+      @content;
+    }
+  } @else if $device == "sony" {
+    @media screen and (min-width: $minSony) and (max-width: $maxSony) {
+      @content;
+    }
+  }
+}

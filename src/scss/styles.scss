@@ -1,6 +1,89 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "button";
+@import "mixins-new";
+
 body {
-  background: peru;
-  a {
+  background: $bg;
+}
+
+a {
+  color: blue;
+  margin-bottom: 10px;
+  // @include link();
+  &:nth-child(odd) {
+    @include link(yellow);
+  }
+
+  &:nth-child(even) {
+    @include link(rgb(0, 255, 21));
+  }
+}
+
+h1 {
+  // font-size: $title;
+  @include sexyTitle();
+}
+
+.box {
+  // 이렇게 안에 넣는것을 Nesting이라고 한다.
+  h2 {
     color: blue;
+  }
+
+  button {
+    background-color: yellow;
+  }
+}
+
+.box:hover {
+  background-color: red;
+}
+
+.word-test {
+  a {
+    margin-bottom: 10px;
+    // @include link();
+    &:nth-child(odd) {
+      @include propFunction("item1");
+    }
+
+    &:nth-child(even) {
+      @include propFunction("item2");
+    }
+  }
+}
+
+.login-test {
+  a {
+    @extend %button;
+    text-decoration: none;
+  }
+
+  button {
+    @extend %button;
+    border: none;
+  }
+}
+
+.mixins-new {
+  a {
+    // content 예제
+    @include responsive-one {
+      background-color: green;
+    }
+  }
+}
+
+.mixins-new-1 {
+  h1 {
+    color: violet;
+    @include responsive-two("iphone") {
+      color: yellow;
+    }
+    @include responsive-two("tablet") {
+      font-size: 40px;
+    }
   }
 }

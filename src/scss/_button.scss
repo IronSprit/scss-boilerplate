@@ -1,0 +1,11 @@
+// extends 예제
+// 공통 속성을 적용하고 싶을 때 사용한다.
+
+%button {
+  border-radius: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 5px 10px;
+
+  background-color: purple;
+}
